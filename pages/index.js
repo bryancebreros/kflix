@@ -38,12 +38,12 @@ export async function getServerSideProps(context) {
  
 
   const loonaVideos = await getVideos("loona music video")
-  const mamamooVideos = await getVideos("mamamoo music video")
+  const kpopVideos = await getVideos("kpop mv")
   return {
-    props: { loonaVideos, mamamooVideos, watchItAgainVideos },
+    props: { loonaVideos, kpopVideos, watchItAgainVideos },
   }
 }
-export default function Home({loonaVideos, mamamooVideos, watchItAgainVideos}) {
+export default function Home({loonaVideos, kpopVideos, watchItAgainVideos}) {
   
   return (
     <div className={styles.container}>
@@ -63,7 +63,7 @@ export default function Home({loonaVideos, mamamooVideos, watchItAgainVideos}) {
         />
         <div className={styles.sectionWrapper}>
           <SectionCards title="LOONA" videos={loonaVideos} size="large"/>
-          <SectionCards title="MAMAMOO" videos={mamamooVideos} size="small"/>
+          <SectionCards title="Popular" videos={kpopVideos} size="small"/>
           <SectionCards title="Watch again" videos={watchItAgainVideos} size="small"/>
         </div>
 
