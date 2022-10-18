@@ -1,11 +1,50 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/nav/navbar'
 import Banner from '../components/banner/banner'
-import Card from '../components/card/card'
+import SectionCards from '../components/card/section-cards'
 
-export default function Home() {
+import {getVideos, getWatchItAgainVideos} from "../lib/videos"
+import { redirectUser } from '../utils/redirectUser'
+
+export async function getServerSideProps(context) {
+  
+  // const token = context.req ? context.req?.cookies.token : null
+
+  // const userId = await verifyToken(token)
+  
+  // if(!userId){
+  //   return {
+  //     props: {},
+  //     redirect: {
+  //       destination: "/login",
+  //       permanent: false,
+  //     }
+  //   }
+  // }
+  const { userId, token} = await redirectUser(context)
+  if (!userId) {
+    return {
+      props: {},
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    }
+  }
+  
+  const watchItAgainVideos = await getWatchItAgainVideos(userId, token)
+  
+ 
+
+  const loonaVideos = await getVideos("loona music video")
+  const mamamooVideos = await getVideos("mamamoo music video")
+  return {
+    props: { loonaVideos, mamamooVideos, watchItAgainVideos },
+  }
+}
+export default function Home({loonaVideos, mamamooVideos, watchItAgainVideos}) {
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -14,16 +53,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <h1>K-Flix</h1> */}
-      <Navbar username="cebreros@gmail.com" />
-      <Banner 
-        title="LOONA"
-        subTitle="12 members"
-        imgUrl="/static/loonaflix.webp"
-      />
-      <Card imgUrl="/static/loonaflix.webp" size="large" />
-      <Card imgUrl="/static/loonaflix.webp" size="medium" />
+      <div className={styles.main}>
+        <Navbar />
+        <Banner 
+          title="LOONA"
+          subTitle="12 members"
+          imgUrl="/static/loonaflix.webp"
+          videoId="XEOCbFJjRw0"
+        />
+        <div className={styles.sectionWrapper}>
+          <SectionCards title="LOONA" videos={loonaVideos} size="large"/>
+          <SectionCards title="MAMAMOO" videos={mamamooVideos} size="small"/>
+          <SectionCards title="Watch again" videos={watchItAgainVideos} size="small"/>
+        </div>
 
-      <Card imgUrl="/static/loonaflix.webp" size="small" />
+      </div>
 
     </div>
   )
