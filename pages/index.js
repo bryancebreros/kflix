@@ -5,7 +5,9 @@ import Banner from '../components/banner/banner'
 import SectionCards from '../components/card/section-cards'
 
 import {getVideos, getWatchItAgainVideos} from "../lib/videos"
+import { getGroups } from '../lib/groups'
 import { redirectUser } from '../utils/redirectUser'
+
 
 export async function getServerSideProps(context) {
   
@@ -35,15 +37,15 @@ export async function getServerSideProps(context) {
   
   const watchItAgainVideos = await getWatchItAgainVideos(userId, token)
   
- 
+  const groupCards = getGroups()
 
-  const loonaVideos = await getVideos("loona music video")
+  
   const kpopVideos = await getVideos("kpop mv")
   return {
-    props: { loonaVideos, kpopVideos, watchItAgainVideos },
+    props: {kpopVideos, watchItAgainVideos, groupCards},
   }
 }
-export default function Home({loonaVideos, kpopVideos, watchItAgainVideos}) {
+export default function Home({ kpopVideos, watchItAgainVideos, groupCards}) {
   
   return (
     <div className={styles.container}>
@@ -57,13 +59,13 @@ export default function Home({loonaVideos, kpopVideos, watchItAgainVideos}) {
         <Navbar />
         <Banner 
           title="LOONA"
-          subTitle="12 members"
+          subTitle="Butterfly"
           imgUrl="/static/loonaflix.webp"
           videoId="XEOCbFJjRw0"
         />
         <div className={styles.sectionWrapper}>
-          <SectionCards title="LOONA" videos={loonaVideos} size="large"/>
-          <SectionCards title="Popular" videos={kpopVideos} size="small"/>
+          <SectionCards title="GROUPS" videos={groupCards} size="large"/>
+          <SectionCards title="Popular NOW" videos={kpopVideos} size="small"/>
           <SectionCards title="Watch again" videos={watchItAgainVideos} size="small"/>
         </div>
 

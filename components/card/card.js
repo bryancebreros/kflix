@@ -23,7 +23,7 @@ const Card = ({ imgUrl, size, id, shouldScale = true}) => {
     }
     return (
         <div className={styles.container}>
-            <motion.div
+            <motion.div 
                 className={cls(styles.imgMotionWrapper, classMap[size])}
                 { ...shouldHover}
             >

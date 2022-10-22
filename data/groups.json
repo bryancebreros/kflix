@@ -1,0 +1,92 @@
+{
+    "groups": [
+        {
+            "id": "loona"
+        },
+        {
+            "id": "mamamoo"
+        },
+        {
+            "id": "bts"
+        },
+        {
+            "id": "blackpink"
+        },
+        {
+            "id": "itzy"
+        },
+        {
+            "id": "redvelvet"
+        },
+        {
+            "id": "twice"
+        },
+        {
+            "id": "exo"
+        },
+        {
+            "id": "monstax"
+        },
+        {
+            "id": "txt"
+        }
+    ],
+    "groupMembers": {
+        "loona": [
+                {
+                    "id": "heejin"
+                },
+                {
+                    "id": "loonahyunjin"
+                },
+                {
+                    "id": "haseul"
+                },
+                {
+                    "id": "yeojin"
+                },
+                {
+                    "id": "vivi"
+                },
+                {
+                    "id": "kimlip"
+                },
+                {
+                    "id": "jinsoul"
+                },
+                {
+                    "id": "choerry"
+                },
+                {
+                    "id": "yves"
+                },
+                {
+                    "id": "chuu"
+                },
+                {
+                    "id": "gowon"
+                },
+                {
+                    "id": "oliviahye"
+                }
+        ],
+        "mamamoo": [
+            {
+                "id": "mamamoosolar"
+            },
+            {
+                "id": "moonbyul"
+            },
+            {
+                "id": "wheein"
+            },
+            {
+                "id": "hwasa"
+            }
+        ]  
+            
+            
+        
+    }
+    
+}

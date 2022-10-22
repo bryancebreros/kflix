@@ -16,9 +16,10 @@ const Navbar = () => {
         try {
           const { email, issuer } = await magic.user.getMetadata();
           const didToken = await magic.user.getIdToken()   
-          if (email) {
-            setUsername(email);
-          }
+          // if (email) {
+          //   setUsername(email);
+          // }
+          {email === "cebrerosbryan@gmail.com" ? setUsername("GUEST") : setUsername(email)}
         } catch (err) {
           console.error("error, can't retrieve email:", err);
         }
