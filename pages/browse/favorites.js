@@ -31,12 +31,12 @@ const Favorites = ({favoriteVideos}) => {
     return (
         <div>
             <Head>
-                <title>My list</title>
+                <title>Favorites</title>
             </Head> 
             <main className={styles.main}>
                 <Navbar />
                 <div className={styles.sectionWrapper}>
-                    <SectionCards title="Favorite Videos" videos={favoriteVideos} size="small" shouldWrap shouldScale={false} />
+                    <SectionCards title="Favorites" videos={favoriteVideos} size="small" shouldWrap shouldScale={false} />
                 
                 </div>
             </main>

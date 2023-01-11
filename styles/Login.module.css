@@ -33,7 +33,10 @@
   
   .logoWrapper {
     color: var(--red);
-    width: 8rem /* 128px */;
+
+    width:9rem;
+    height: 4rem;
+    background-image: url(/static/kflix.png);
   }
   .main {
     width: 100%;

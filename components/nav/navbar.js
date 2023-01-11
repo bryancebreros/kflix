@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import styles from "./navbar.module.css"
-
+import { StarIcon } from '@heroicons/react/24/solid'
 import Link from "next/link"
 import { useRouter } from "next/router"
 import Image from "next/image"
@@ -16,10 +16,9 @@ const Navbar = () => {
         try {
           const { email, issuer } = await magic.user.getMetadata();
           const didToken = await magic.user.getIdToken()   
-          // if (email) {
-          //   setUsername(email);
-          // }
-          {email === "cebrerosbryan@gmail.com" ? setUsername("GUEST") : setUsername(email)}
+          if (email) {
+            setUsername(email);
+          }
         } catch (err) {
           console.error("error, can't retrieve email:", err);
         }
@@ -77,7 +76,7 @@ const Navbar = () => {
             </a>
           </Link>
           <ul className={styles.navItems}>
-            <li className={styles.navItem} onClick={handleonClickHome}>Home</li>
+            <StarIcon height={28} width={28}/>
             <li className={styles.navItem2} onClick={handleonClickMyGroups}>Favorites</li>
           </ul>
           <nav className={styles.navContainer}>
@@ -85,6 +84,7 @@ const Navbar = () => {
               
               <button className={styles.usernameBtn} onClick={handleShowDropdown}>
                 <p className={styles.username}>{username}</p>
+                
                 <Image 
                     src="/static/expand_more.svg"
                     alt="show more"

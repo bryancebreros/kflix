@@ -1,29 +1,17 @@
+import { useRef, useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/nav/navbar'
 import Banner from '../components/banner/banner'
 import SectionCards from '../components/card/section-cards'
 
-import {getVideos, getWatchItAgainVideos} from "../lib/videos"
+import { getVideos, getWatchItAgainVideos } from "../lib/videos"
 import { getGroups } from '../lib/groups'
 import { redirectUser } from '../utils/redirectUser'
 
 
 export async function getServerSideProps(context) {
-  
-  // const token = context.req ? context.req?.cookies.token : null
 
-  // const userId = await verifyToken(token)
-  
-  // if(!userId){
-  //   return {
-  //     props: {},
-  //     redirect: {
-  //       destination: "/login",
-  //       permanent: false,
-  //     }
-  //   }
-  // }
   const { userId, token} = await redirectUser(context)
   if (!userId) {
     return {
@@ -34,18 +22,18 @@ export async function getServerSideProps(context) {
       },
     }
   }
-  
+
   const watchItAgainVideos = await getWatchItAgainVideos(userId, token)
-  
+
   const groupCards = getGroups()
 
-  
+
   const kpopVideos = await getVideos("kpop mv")
   return {
-    props: {kpopVideos, watchItAgainVideos, groupCards},
+    props: { kpopVideos, watchItAgainVideos, groupCards },
   }
 }
-export default function Home({ kpopVideos, watchItAgainVideos, groupCards}) {
+export default function Home({ kpopVideos, watchItAgainVideos, groupCards }) {
   
   return (
     <div className={styles.container}>
@@ -57,16 +45,21 @@ export default function Home({ kpopVideos, watchItAgainVideos, groupCards}) {
       {/* <h1>K-Flix</h1> */}
       <div className={styles.main}>
         <Navbar />
-        <Banner 
+        <Banner
           title="LOONA"
           subTitle="Butterfly"
           imgUrl="/static/loonaflix.webp"
           videoId="XEOCbFJjRw0"
         />
         <div className={styles.sectionWrapper}>
-          <SectionCards title="GROUPS" videos={groupCards} size="large"/>
-          <SectionCards title="Popular NOW" videos={kpopVideos} size="small"/>
-          <SectionCards title="Watch again" videos={watchItAgainVideos} size="small"/>
+          
+          
+            <SectionCards title="GROUPS" videos={groupCards} size="large" />
+          
+
+          
+          <SectionCards title="Popular NOW" videos={kpopVideos} size="small" />
+          <SectionCards title="Watch again" videos={watchItAgainVideos} size="small" />
         </div>
 
       </div>

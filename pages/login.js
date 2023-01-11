@@ -79,18 +79,14 @@ const Login = () => {
 
             <header className={styles.header}>
                 <div className={styles.headerWrapper}>
-                <Link className={styles.logoLink} href="/">
-                    <a>
+                <div className={styles.logoLink}>
+                    
                     <div className={styles.logoWrapper}>
-                        <Image
-                        src="/static/kflix.png"
-                        alt="k flix logo"
-                        width="114px"
-                        height="48px"
+                        <Image alt=""
                         />
                     </div>
-                    </a>
-                </Link>
+                    
+                </div>
                 </div>
             </header>
             <main className={styles.main}>

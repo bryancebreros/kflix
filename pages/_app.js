@@ -9,15 +9,15 @@ function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    // const handleLoggedIn = async () => {
-    //   const isLoggedIn = await magic.user.isLoggedIn()
-    //   if (isLoggedIn){
-    //     router.push("/")
-    //   }else {
-    //     router.push("/login")
-    //   }
-    // }
-    // handleLoggedIn()
+    const handleLoggedIn = async () => {
+      const isLoggedIn = await magic.user.isLoggedIn()
+      if (isLoggedIn){
+        router.push("/")
+      }else {
+        router.push("/login")
+      }
+    }
+    handleLoggedIn()
   }, [])
 
   useEffect(() => {

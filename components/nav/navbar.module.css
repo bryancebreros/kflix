@@ -14,6 +14,7 @@
     padding-left: 1rem /* 16px */;
     padding-right: 1rem /* 16px */;
     display: flex;
+    justify-content: space-around;
     padding: 1.25rem /* 20px */;
   }
   
@@ -28,12 +29,14 @@
   
   .logoWrapper {
     color: var(--red);
+    
     width: 8rem /* 128px */;
   }
   
   .navItems {
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 50%;
     margin-left: 1.5rem /* 24px */;
     font-size: 0.875rem /* 14px */;
@@ -42,7 +45,10 @@
     line-height: 1.25rem /* 20px */;
     list-style: none;
   }
-  
+  .starIcon {
+    height: 2rem;
+    width: 2rem;
+  }
   .navItem {
     font-weight: 600;
     font-size: 1rem;
@@ -56,13 +62,14 @@
   
   .navContainer {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-left: auto;
   }
   
   .usernameBtn {
     display: flex;
     align-items: center;
+    
     overflow: hidden;
     color: var(--white);
   }
@@ -131,4 +138,14 @@
     .navItem {
       margin-right: 1.25rem /* 20px */;
     }
+    
   }
+
+@media (max-width: 768px) {
+  .navItem2 {
+    display: none;
+  }
+  .username {
+    display: none;
+  }
+}
