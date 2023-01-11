@@ -64,20 +64,7 @@ const Video = ({video}) => {
         }
         handleLikeService()
     }, [videoId]) 
-    // const handleToggleDislike = async () => {
-    //     console.log("handle dislike")
-    //     setToggleDislike(true)
-    //     setToggleLike(false)
-    // }
-
-    // const handleToggleLike = async () => {
-    //     console.log("toggle like")
-    //     setToggleLike(true)
-    //     setToggleDislike(false)
-    // }
-    // const checkToggle = (toggle, setToggle) => {
-    //     toggle ? setToggle(false) : setToggle(true);
-    //   }
+    
     const ratingService = async (favorited) => {
         return await fetch("/api/stats", {
             method: "POST",
@@ -94,7 +81,6 @@ const Video = ({video}) => {
         const favorited = !toggleLike
         setToggleLike(favorited)
         const response = await ratingService(favorited)
-        console.log("data", await response.json());
         // if (toggleLike) {
         //     setToggleLike(false)
         //     // checkToggle(toggleLike, setToggleLike);
